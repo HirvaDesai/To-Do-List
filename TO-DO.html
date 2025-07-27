@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster Pro</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Inter:wght@400;500&display=swap">
+    <link rel="stylesheet" href="Todo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <h1>TaskMaster Pro</h1>
+                <div class="header-controls">
+                    <button id="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button id="add-task-btn" class="primary-btn">
+                        <i class="fas fa-plus"></i> Add Task
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="filter-section">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="task-search" placeholder="Search tasks..." aria-label="Search tasks">
+            </div>
+            <div class="filter-controls">
+                <select id="category-filter" aria-label="Filter by category">
+                    <option value="all">All Categories</option>
+                    <option value="work">Work</option>
+                    <option value="personal">Personal</option>
+                    <option value="health">Health</option>
+                </select>
+                <select id="priority-filter" aria-label="Filter by priority">
+                    <option value="all">All Priorities</option>
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                </select>
+            </div>
+        </div>
+
+        <main class="task-container" id="task-container">
+            <!-- Tasks will be dynamically inserted here -->
+            <div class="empty-state">
+                <img src="https://cdn-icons-png.flaticon.com/512/4076/4076478.png" alt="No tasks" class="empty-img">
+                <h2>No tasks yet!</h2>
+                <p>Click the "Add Task" button to get started.</p>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-value" id="total-tasks">0</span>
+                    <span class="stat-label">Total</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="completed-tasks">0</span>
+                    <span class="stat-label">Completed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="pending-tasks">0</span>
+                    <span class="stat-label">Pending</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Add Task Modal -->
+    <div class="modal-overlay" id="task-modal">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Close modal">&times;</button>
+            <h2>Add New Task</h2>
+            <form id="task-form">
+                <div class="form-group">
+                    <label for="task-title">Title*</label>
+                    <input type="text" id="task-title" required aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="task-description">Description</label>
+                    <textarea id="task-description" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="task-due-date">Due Date*</label>
+                    <input type="datetime-local" id="task-due-date" required aria-required="true">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="task-priority">Priority</label>
+                        <select id="task-priority">
+                            <option value="high">High</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-category">Category</label>
+                        <select id="task-category">
+                            <option value="work">Work</option>
+                            <option value="personal" selected>Personal</option>
+                            <option value="health">Health</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="primary-btn">Add Task</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Celebration Modal -->
+    <!-- Celebration Modal -->
+<div class="celebration-overlay hidden" id="celebration-modal">
+    <div class="celebration-content">
+        <h2 id="celebration-message">Task Completed!</h2>
+        <div class="confetti-container" id="confetti-container"></div>
+    </div>
+</div>
+
+    <script src="Todo.js"></script>
+</body>
+</html>
